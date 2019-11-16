@@ -11,7 +11,28 @@ function solution (input) {
 
     const copy = [];
 
-    copy.push(arr[0].toString() + arr[1].toString() + arr[2].toString());
+    var i;
+    var ar = arr.length * 2;
+    for(i = 0; i < ar; i++) {
+      arr[i]
+    };
+
+    var i;
+    var ar = arr.length * 2;
+    for(i = 0; i < ar; i++) {
+      copy[i] = arr[i] + arr[i + 1];
+    };
+    
+    
+
+    var i;
+    var item = "";
+    for(i = 0; i < arr.length; i++) {
+      item = item + arr[i].toString();
+    };
+    copy.push(item);
+    
+
     copy.push(arr[0].toString() + arr[2].toString() + arr[1].toString());
     arr.sort(function(a, b){return b-a});
     copy.push(arr[0].toString() + arr[1].toString() + arr[2].toString());
@@ -33,3 +54,4 @@ function solution (input) {
 console.log(solution('326')); // expected ouput 632,623,362,326,263,236
 console.log(solution('A 3B2 C6D')); // expected ouput 632,623,362,326,263,236
 console.log(solution('ABC')); // expected output Input contains no integers
+console.log(solution('3264'));
