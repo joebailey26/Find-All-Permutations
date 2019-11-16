@@ -7,47 +7,36 @@ function solution (input) {
 
     var input = input.replace(/\D/g,'');
 
-    const arr = input.toString(10).replace(/\D/g, '0').split('').map(Number);
+    var array = input.toString(10).replace(/\D/g, '0').split('').map(Number); 
 
-    const copy = [];
+      var length = array.length,
+      result = [array.slice()],
+      c = new Array(length).fill(0),
+      i = 1, k, p;
 
-    var i;
-    var ar = arr.length * 2;
-    for(i = 0; i < ar; i++) {
-      arr[i]
-    };
-
-    var i;
-    var ar = arr.length * 2;
-    for(i = 0; i < ar; i++) {
-      copy[i] = arr[i] + arr[i + 1];
-    };
-    
-    
-
-    var i;
-    var item = "";
-    for(i = 0; i < arr.length; i++) {
-      item = item + arr[i].toString();
-    };
-    copy.push(item);
-    
-
-    copy.push(arr[0].toString() + arr[2].toString() + arr[1].toString());
-    arr.sort(function(a, b){return b-a});
-    copy.push(arr[0].toString() + arr[1].toString() + arr[2].toString());
-    copy.push(arr[0].toString() + arr[2].toString() + arr[1].toString());
-    arr.sort();
-    copy.push(arr[0].toString() + arr[1].toString() + arr[2].toString());
-    copy.push(arr[0].toString() + arr[2].toString() + arr[1].toString());
-
-    copy.sort(function(a, b){return b-a});
-    
-    return copy;
-  }
-
+      while (i < length) {
+        if (c[i] < i) {
+          k = i % 2 && c[i];
+          p = array[i];
+          array[i] = array[k];
+          array[k] = p;
+          ++c[i];
+          i = 1;
+          result.push(array.slice());
+        } else {
+          c[i] = 0;
+          ++i;
+        }
+      }
+      var i;
+      for(i = 0; i < result.length; i++) {
+        
+        result[i] = result[i].toString();
+        result[i] = result[i].replace(/,/g, "")
+      }
+      return result.sort(function(a, b){return b-a}).toString();
+    }
   return "Input contains no integers";
-  
 }
 
 // some example inputs
