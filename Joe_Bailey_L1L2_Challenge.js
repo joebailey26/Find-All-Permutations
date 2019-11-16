@@ -5,7 +5,7 @@
 function solution (input) {
   if (/\d/.test(input)) {
 
-    var input = input.replace(/\D/g,'');
+    input = input.replace(/\D/g,'');
 
     var array = input.toString(10).replace(/\D/g, '0').split('').map(Number); 
 
@@ -28,7 +28,6 @@ function solution (input) {
           ++i;
         }
       }
-      var i;
       for(i = 0; i < result.length; i++) {
         
         result[i] = result[i].toString();
